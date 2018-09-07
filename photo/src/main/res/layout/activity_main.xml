@@ -11,9 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="166dp"
         android:background="@android:color/transparent"
-        android:hint="| 输入要发布的内容"
+        android:hint="输入要发布的内容"
         android:padding="5dp"
-        android:textColorHint="@android:color/black"
         android:gravity="top"
         android:textColor="@android:color/black"
         />

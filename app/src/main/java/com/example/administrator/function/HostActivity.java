@@ -12,15 +12,18 @@ import cn.kevin.floatingeditor.EditorHolder;
 import cn.kevin.floatingeditor.FloatEditorActivity;
 
 public class HostActivity extends AppCompatActivity {
+    private final int REQUEST_VIDEO_CODE = 1;
+
     private Button mShare;
     private Button mDynamic;
-
+    private Button mSelectVideo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
         mShare = (Button)findViewById(R.id.share);
         mDynamic = (Button)findViewById(R.id.dynamic);
+        mSelectVideo = (Button)findViewById(R.id.select_video);
 
         mShare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +66,12 @@ public class HostActivity extends AppCompatActivity {
                 startActivity(new Intent(HostActivity.this , com.zq.weixinselectpicture.MainActivity.class));
             }
         });
-
-
+        mSelectVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, REQUEST_VIDEO_CODE);
+            }
+        });
     }
 }
