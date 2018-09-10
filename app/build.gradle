@@ -28,6 +28,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:0.4'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.1'
     implementation project(':floatingeditor')
-    implementation project(':pictureselector')
     compile project(path: ':photo')
+    implementation project(':photo')
 }

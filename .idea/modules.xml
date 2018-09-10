@@ -5,11 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/Function.iml" filepath="$PROJECT_DIR$/Function.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/floatingeditor/floatingeditor.iml" filepath="$PROJECT_DIR$/floatingeditor/floatingeditor.iml" />
-      <module fileurl="file://D:\AS\project\Function\floatingeditor\floatingeditor.iml" filepath="D:\AS\project\Function\floatingeditor\floatingeditor.iml" />
       <module fileurl="file://$PROJECT_DIR$/photo/photo.iml" filepath="$PROJECT_DIR$/photo/photo.iml" />
       <module fileurl="file://D:\AS\project\Function\android-advanced-effect-picture-selector\pictureselector\picture.iml" filepath="D:\AS\project\Function\android-advanced-effect-picture-selector\pictureselector\picture.iml" />
       <module fileurl="file://$PROJECT_DIR$/pictureselector/pictureselector.iml" filepath="$PROJECT_DIR$/pictureselector/pictureselector.iml" />
-      <module fileurl="file://D:\AS\project\Function\pictureselector\pictureselector.iml" filepath="D:\AS\project\Function\pictureselector\pictureselector.iml" />
     </modules>
   </component>
 </project>
