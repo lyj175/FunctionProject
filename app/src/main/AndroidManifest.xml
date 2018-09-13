@@ -28,6 +28,8 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity_Dynamic"></activity>
+        <activity android:name=".ActivityFriendCircle"></activity>
         <!--<activity-->
             <!--android:name="vn.tungdx.mediapicker.activities.MediaPickerActivity"-->
             <!--android:screenOrientation="portrait"-->

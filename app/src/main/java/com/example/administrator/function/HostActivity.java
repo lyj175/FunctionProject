@@ -16,6 +16,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.dmcbig.mediapicker.PickerActivity;
+import com.dmcbig.mediapicker.PickerConfig;
+import com.dmcbig.mediapicker.entity.Media;
+
+import java.util.ArrayList;
+
 import cn.kevin.floatingeditor.EditorCallback;
 import cn.kevin.floatingeditor.EditorHolder;
 import cn.kevin.floatingeditor.FloatEditorActivity;
@@ -28,7 +34,8 @@ public class HostActivity extends AppCompatActivity {
     private Button mDynamic;
     private Button mSelectVideo;
     private ImageView mTestImage;
-
+    private ArrayList<Media> defaultSelect;
+    private ArrayList<Media> receive;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,20 +84,40 @@ public class HostActivity extends AppCompatActivity {
         mDynamic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HostActivity.this, com.zq.weixinselectpicture.MainActivity.class));
+                startActivity(new Intent(HostActivity.this, Activity_Dynamic.class));
             }
         });
         mSelectVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentPic = new Intent(
-                        Intent.ACTION_GET_CONTENT);
-                intentPic.addCategory(Intent.CATEGORY_OPENABLE);
-                intentPic.setType("video/*;image/*");
-                startActivityForResult(intentPic,
-                        REQUEST_VIDEO_CODE);
+//                Intent intentPic = new Intent(
+//                        Intent.ACTION_GET_CONTENT);
+//                intentPic.addCategory(Intent.CATEGORY_OPENABLE);
+//                intentPic.setType("video/*;image/*");
+//                startActivityForResult(intentPic,
+//                        REQUEST_VIDEO_CODE);
+                startActivity(new Intent(HostActivity.this , PickerActivity.class));
             }
         });
+    }
+
+    void go(){
+        Intent intent =new Intent(HostActivity.this, PickerActivity.class);
+        intent.putExtra(PickerConfig.SELECT_MODE,PickerConfig.PICKER_IMAGE_VIDEO);//default image and video (Optional)
+        long maxSize=188743680L;//long long long long类型
+        intent.putExtra(PickerConfig.MAX_SELECT_SIZE,maxSize); //default 180MB (Optional)
+        intent.putExtra(PickerConfig.MAX_SELECT_COUNT,9);  //default 40 (Optional)
+        intent.putExtra(PickerConfig.DEFAULT_SELECTED_LIST,defaultSelect); //(Optional)默认选中的照片
+        HostActivity.this.startActivityForResult(intent,200);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==200&&resultCode==PickerConfig.RESULT_CODE){
+            receive=data.getParcelableArrayListExtra(PickerConfig.EXTRA_RESULT);
+            mTestImage.setImageURI(Uri.parse(receive.get(0).path));
+        }
     }
 
 }
